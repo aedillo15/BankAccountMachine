@@ -1,5 +1,7 @@
 import BankAccount
 
 #Create a BankAccount object then call the function created inside of the object
-BankAccount1 = BankAccount()
+BankAccount1 = BankAccount.BankAccount()
+BankAccount1.bankProgram()
+
 
