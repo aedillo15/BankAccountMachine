@@ -1,11 +1,12 @@
-import Statement
-
-inputAccountNumber = ''
-while(inputAccountNumber.isdigit() != True or int(inputAccountNumber) < 100 or int(inputAccountNumber) > 1000):
+import BankStatement
+inputAccountHolderName = ''
+#Input, Assignment, Validation for the _accountHolderName
+while(inputAccountHolderName.isalpha() != True or inputAccountHolderName.isspace() for x in inputAccountHolderName != True ): #Ask user until the input is a valid name (isalpha() and if digit ask them again)
     try:
-        inputAccountNumber = input('Please enter the account number: ') #Input
-        if inputAccountNumber.isalpha() or int(inputAccountNumber) < 100 or int(inputAccountNumber) > 1000 : #Validation
-            print('Please enter a valid account number')
-            continue
+        inputAccountHolderName = input('Please enter the name of the account holder: ')
+        str(inputAccountHolderName) #Input
+        if inputAccountHolderName.isdigit(): #Validation
+            print('Please enter a valid name')
+            continue   
     except ValueError:
-        print('Please enter a valid account number')
+        print('Please enter a valid name')

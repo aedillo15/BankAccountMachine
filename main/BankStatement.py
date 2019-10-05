@@ -20,7 +20,7 @@ class BankStatement: #BankStatement class declaration
         try:
             while(bankInformationSubmitted != True): #Ask user all of information until the user reaches to the end
                 #Input, Assignment, Validation for the _accountHolderName
-                while(inputAccountHolderName.isalpha() != True): #Ask user until the input is a valid name (isalpha() and if digit ask them again)
+                while(inputAccountHolderName.isalpha() != True ): #Ask user until the input is a valid name (isalpha() and if digit ask them again)
                     try:
                         inputAccountHolderName = input('Please enter the name of the account holder: ') #Input
                         if inputAccountHolderName.isdigit(): #Validation
@@ -40,8 +40,12 @@ class BankStatement: #BankStatement class declaration
                         print('Please enter a valid account number')
                 self._accountNumber = inputAccountNumber  #Assignment of _accountNumber
                 #Input, Assignment, Validation for the _accountAnnualInterestRate
-                inputAnnualInterestRate = input('Please enter the annual interest rate percentage: ')
-                self._interestRate = inputAnnualInterestRate  
+                while(inputAnnualInterestRate.isdigit() != True):
+                    inputAnnualInterestRate = input('Please enter the annual interest rate percentage(%): ')
+                    if inputAnnualInterestRate.isalpha() or int(inputAnnualInterestRate) < 100: #Validate that inputAnnualInterestRate is not alphabetical and less than 100
+                        print('Please enter a valid annual interest rate.')
+                    inputAnnualInterestRate = inputAnnualInterestRate / 100 #Turn the whole number into a percentage by dividing the inputAnnualInterestRate by 100
+                self._interestRate = inputAnnualInterestRate #Assignment of _interestRate to the inputAnnualInterestRate of the user 
                 inputInitialBalance = input('Please enter the initial balance: ')
                 self._initialBalance = inputInitialBalance  
                 inputMonthlyDeposit = input('Please enter the monthly deposit: ')
