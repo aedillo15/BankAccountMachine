@@ -17,18 +17,26 @@ class BankStatement: #BankStatement class declaration
         inputMonthlyDeposit = '' #Intializing inputMonthlyDeposit variable
         inputMonthlyWithdrawal = '' #Intializing inputMonthlyWithdrawal
         bankInformationSubmitted = False #Initializing boolean for while loop information
+        splitName = ''
+        Name = ''
         try:
             while(bankInformationSubmitted != True): #Ask user all of information until the user reaches to the end
                 #Input, Assignment, Validation for the _accountHolderName
-                while(inputAccountHolderName.isalpha() != True ): #Ask user until the input is a valid name (isalpha() and if digit ask them again)
+                while(Name.isalpha() != True ): #Ask user until the input is a valid name (isalpha() and if digit ask them again)
                     try:
-                        inputAccountHolderName = input('Please enter the name of the account holder: ') #Input
+                        inputAccountHolderName = input('Please enter the name of the account holder: ')
                         if inputAccountHolderName.isdigit(): #Validation
                             print('Please enter a valid name')
                             continue   
+                        splitName = inputAccountHolderName.split() #Input
+                        firstName = splitName[0]
+                        Name = firstName
+                        if(len(splitName) == 2):
+                            lastName = splitName[1]
+                            Name += lastName.capitalize()
                     except ValueError:
                         print('Please enter a valid name')
-                self._accountHolderName = inputAccountHolderName.capitalize() #Assignment of _accountHolderName, Capitalize the first letter of the user name
+                self._accountHolderName = firstName + ' ' + lastName #Assignment of _accountHolderName, Capitalize the first letter of the user name
                 #Input, Assignment, Validation for the _accountNumber
                 while(inputAccountNumber.isdigit() != True or int(inputAccountNumber) < 100 or int(inputAccountNumber) > 1000):
                     try:
