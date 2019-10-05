@@ -1,10 +1,11 @@
 import BankAccount
-inputAccountHolderName = ''
-while (inputAccountHolderName.isalpha() != True):
+
+inputAccountNumber = ''
+while(inputAccountNumber.isdigit() != True or int(inputAccountNumber) < 100 or int(inputAccountNumber) > 1000):
     try:
-        inputAccountHolderName = input('Please enter the name of the account holder: ') 
-        if inputAccountHolderName.isdigit():
-            print('Please enter a valid name')
-            continue   
+        inputAccountNumber = input('Please enter the account number: ') #Input
+        if inputAccountNumber.isalpha() or int(inputAccountNumber) < 100 or int(inputAccountNumber) > 1000 : #Validation
+            print('Please enter a valid account number')
+            continue
     except ValueError:
-        print('Please enter a valid name')
+        print('Please enter a valid account number')
