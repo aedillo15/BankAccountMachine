@@ -1,7 +1,7 @@
-import BankAccount
+import BankStatement
 
 #Create a BankAccount object then call the function created inside of the object
-BankAccount1 = BankAccount.BankAccount()
-BankAccount1.bankProgram()
+BankStatement1 = BankStatement.BankStatement()
+BankStatement1.bankProgram()
 
 

@@ -1,13 +1,12 @@
-class BankAccount:
-    def __init__(self):
-        _bankaccountNumber = 0
-        _initialBalance = 0
-        _interestRate = 0.3
-        _accountHolderName = ''
-        _monthlyDeposit = 0
-        _monthlyWithdrawal = 0
-
-    def bankProgram(self):
+class BankStatement: #BankStatement class declaration
+    def __init__(self): #BankStatement constructor
+        _accountNumber = 0 #accountNumber for the BankStatement class
+        _initialBalance = 0 #intialBalance for the BankStatement class
+        _interestRate = 0.3 #interestRate for the BankStatement class
+        _accountHolderName = '' #accountHoldername for the BankStatement class
+        _monthlyDeposit = 0 #monthlyDeposit for the BankStatment class
+        _monthlyWithdrawal = 0 #monthlyWithdrawal for the BankStatement class
+    def bankProgram(self):  #bankProgram() is responsible for the input, assignment and validation of attributes the BankStatement 
         display = 'Welcome to Programming Principles Bank' #Start of bankProgram menu
         print(display) #Printing out bankProgram menu
         #Declaring inputValues for attributes
@@ -17,7 +16,7 @@ class BankAccount:
         inputInitialBalance = '' #Intializing inputInitialBalance variable
         inputMonthlyDeposit = '' #Intializing inputMonthlyDeposit variable
         inputMonthlyWithdrawal = '' #Intializing inputMonthlyWithdrawal
-        bankInformationSubmitted = False
+        bankInformationSubmitted = False #Initializing boolean for while loop information
         try:
             while(bankInformationSubmitted != True): #Ask user all of information until the user reaches to the end
                 #Input, Assignment, Validation for the _accountHolderName
@@ -39,7 +38,7 @@ class BankAccount:
                             continue
                     except ValueError:
                         print('Please enter a valid account number')
-                self._bankAccountNumber = inputAccountNumber  #Assignment of _accountHolderName, Capitalize the first letter of the user name
+                self._accountNumber = inputAccountNumber  #Assignment of _accountNumber
                 #Input, Assignment, Validation for the _accountAnnualInterestRate
                 inputAnnualInterestRate = input('Please enter the annual interest rate percentage: ')
                 self._interestRate = inputAnnualInterestRate  
