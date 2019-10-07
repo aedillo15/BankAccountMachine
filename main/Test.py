@@ -2,10 +2,11 @@ import BankStatement
 #Tested: Input Bank Holder Name, Input Account Number
 
 #Testing: Input Annual Interest Rate, Initial Balance, Monthly Deposit, Monthly Withrawal
-inputAnnualInterestRate = ''
-while(type(inputAnnualInterestRate) != float): #While the inputOfAnnualInterest is a float
-    inputAnnualInterestRate = input('Please enter the annual interest rate percentage [> 0]: ')
-    if inputAnnualInterestRate.isalpha() or int(inputAnnualInterestRate) < 0: #Validate that inputAnnualInterestRate is not alphabetical and less than 100
-        print('Please enter a valid annual interest rate.')
-    inputAnnualInterestRate = int(inputAnnualInterestRate) / 100 #Turn the whole number into a percentage by dividing the inputAnnualInterestRate by 100
-    float(inputAnnualInterestRate)
+inputMonthlyDeposit = ''
+while(type(inputMonthlyDeposit) != float): # While loop until the inputInitialBalance is equal to a float
+    inputMonthlyDeposit = input('Please enter the initial balance [>= 0]: ')
+    if inputMonthlyDeposit.isalpha() == True:#Validate that inputIntialBalance is not alphabetical
+        print('Please enter a valid balance that is numeric.')
+    inputMonthlyDeposit = float(inputMonthlyDeposit)     
+    if inputMonthlyDeposit <= 0:  #Validate that inputInitialBalance less than or equal to 0
+        print('Please enter a valid balance greater than 0.')

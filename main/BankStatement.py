@@ -38,7 +38,7 @@ class BankStatement: #BankStatement class declaration
                         print('Please enter a valid name')
                 self._accountHolderName = firstName + ' ' + lastName #Assignment of _accountHolderName and readd the white space that was removed after the split of the inputAccountHolderName
                 #Input, Assignment, Validation for the _accountNumber
-                while(inputAccountNumber.isdigit() != True or int(inputAccountNumber) < 100 or int(inputAccountNumber) > 1000):
+                while(inputAccountNumber.isdigit() != True or int(inputAccountNumber) < 100 or int(inputAccountNumber) > 1000): #While loop until inputAccountNumber.isDigit() is not equal to True or until inputAccount Number is less than 100 and until Greater than 1000
                     try:
                         inputAccountNumber = input('Please enter the account number [100 - 1000]: ') #Input
                         if inputAccountNumber.isalpha() or int(inputAccountNumber) < 100 or int(inputAccountNumber) > 1000 : #Validation
@@ -50,13 +50,23 @@ class BankStatement: #BankStatement class declaration
                 #Input, Assignment, Validation for the _accountAnnualInterestRate
                 while(type(inputAnnualInterestRate) != float): #While the inputOfAnnualInterest is a float
                     inputAnnualInterestRate = input('Please enter the annual interest rate percentage [> 0]: ')
-                    if inputAnnualInterestRate.isalpha() or int(inputAnnualInterestRate) < 0: #Validate that inputAnnualInterestRate is not alphabetical and less than 100
+                    if inputAnnualInterestRate.isalpha() or float(inputAnnualInterestRate) < 1: #Validate that inputAnnualInterestRate is not alphabetical and less than 100
                         print('Please enter a valid annual interest rate.')
-                    inputAnnualInterestRate = int(inputAnnualInterestRate) / 100 #Turn the whole number into a percentage by dividing the inputAnnualInterestRate by 100
-                    float(inputAnnualInterestRate)
+                    int(inputAnnualInterestRate) #Converting inputAnnualInterestRate from string to int
+                    if inputAnnualInterestRate.isdigit(): #If inputAnnualInterestRate is a digit then,
+                        inputAnnualInterestRate = int(inputAnnualInterestRate) / 100 #Turn the whole number into a percentage by dividing the inputAnnualInterestRate by 100
+                        float(inputAnnualInterestRate) #Convert inputAnnualInterestRate into a float
                 self._interestRate = inputAnnualInterestRate #Assignment of _interestRate to the inputAnnualInterestRate of the user 
-                inputInitialBalance = input('Please enter the initial balance [>= 0]: ')
-                self._initialBalance = inputInitialBalance  
+                #Input, Assignment, Validation for the _initialBalance
+                while(type(inputInitialBalance) != float): # While loop until the inputInitialBalance is equal to a float
+                    inputInitialBalance = input('Please enter the initial balance [>= 0]: ')
+                    if inputInitialBalance.isalpha() == True:#Validate that inputIntialBalance is not alphabetical
+                        print('Please enter a valid balance that is numeric.')
+                    inputInitialBalance = float(inputInitialBalance)     
+                    if inputInitialBalance <= 0:  #Validate that inputInitialBalance less than or equal to 0
+                        print('Please enter a valid balance greater than 0.')
+                self._initialBalance = inputInitialBalance
+                #Input, Assignment, Validation for the _inputMonthlyDeposit  
                 inputMonthlyDeposit = input('Please enter the monthly deposit [> 100]: ')
                 self._MonthlyDeposit = inputMonthlyDeposit  
                 inputMonthlyWithdrawal = input('Please enter the monthly withdrawal [< 1000]: ')
