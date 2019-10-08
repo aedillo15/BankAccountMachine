@@ -67,7 +67,14 @@ class BankStatement: #BankStatement class declaration
                         print('Please enter a valid balance greater than 0.')
                 self._initialBalance = inputInitialBalance
                 #Input, Assignment, Validation for the _inputMonthlyDeposit  
-                inputMonthlyDeposit = input('Please enter the monthly deposit [> 100]: ')
+                while(type(inputMonthlyDeposit) != float): # While loop until the inputInitialBalance is equal to a float
+                    inputMonthlyDeposit = input('Please enter the monthly deposit [> 100]: ')
+                    if inputMonthlyDeposit.isalpha() == True:#Validate that inputIntialBalance is not alphabetical
+                        print('Please enter a valid balance that is numeric.')  
+                    if float(inputMonthlyDeposit) < 100:  #Validate that inputInitialBalance less than or equal to 0
+                        print('Please enter a valid balance greater than 100.')
+                    if float(inputMonthlyDeposit) >= 100:
+                        inputMonthlyDeposit = float(inputMonthlyDeposit) 
                 self._MonthlyDeposit = inputMonthlyDeposit  
                 inputMonthlyWithdrawal = input('Please enter the monthly withdrawal [< 1000]: ')
                 self._monthlyWithdrawal = inputMonthlyWithdrawal  
