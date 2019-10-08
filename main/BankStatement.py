@@ -31,12 +31,14 @@ class BankStatement: #BankStatement class declaration
                         splitName = inputAccountHolderName.split() #Split the inputAccountHolderName
                         firstName = splitName[0] #Assign the firstName to the 0 index of the splitName list
                         Name = firstName #Name is equal to the firstName
+                        if(len(splitName) == 1):
+                            self._accountHolderName = Name
                         if(len(splitName) == 2): #Yet, if the length of it is 0-1 then it is going to be a lastName 
                             lastName = splitName[1] #Assign the lastName to the splitName 2nd index
                             Name += lastName.capitalize() #Concatanate this name to the Name as a condition to get out of the while loop
+                            self._accountHolderName = firstName + ' ' + lastName #Assignment of _accountHolderName and readd the white space that was removed after the split of the inputAccountHolderName
                     except ValueError: #If there are any ValueErrors be able to handle it
                         print('Please enter a valid name')
-                self._accountHolderName = firstName + ' ' + lastName #Assignment of _accountHolderName and readd the white space that was removed after the split of the inputAccountHolderName
                 #Input, Assignment, Validation for the _accountNumber
                 while(inputAccountNumber.isdigit() != True or int(inputAccountNumber) < 100 or int(inputAccountNumber) > 1000): #While loop until inputAccountNumber.isDigit() is not equal to True or until inputAccount Number is less than 100 and until Greater than 1000
                     try:
