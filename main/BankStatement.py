@@ -52,7 +52,7 @@ class BankStatement: #BankStatement class declaration
                     inputAnnualInterestRate = input('Please enter the annual interest rate percentage [> 0]: ')
                     if inputAnnualInterestRate.isalpha() or float(inputAnnualInterestRate) < 1: #Validate that inputAnnualInterestRate is not alphabetical and less than 100
                         print('Please enter a valid annual interest rate.')
-                    int(inputAnnualInterestRate) #Converting inputAnnualInterestRate from string to int
+                    float(inputAnnualInterestRate) #Converting inputAnnualInterestRate from string to int
                     if inputAnnualInterestRate.isdigit(): #If inputAnnualInterestRate is a digit then,
                         inputAnnualInterestRate = int(inputAnnualInterestRate) / 100 #Turn the whole number into a percentage by dividing the inputAnnualInterestRate by 100
                         float(inputAnnualInterestRate) #Convert inputAnnualInterestRate into a float
@@ -75,8 +75,16 @@ class BankStatement: #BankStatement class declaration
                         print('Please enter a valid balance greater than 100.')
                     if float(inputMonthlyDeposit) >= 100:
                         inputMonthlyDeposit = float(inputMonthlyDeposit) 
-                self._MonthlyDeposit = inputMonthlyDeposit  
-                inputMonthlyWithdrawal = input('Please enter the monthly withdrawal [< 1000]: ')
+                self._MonthlyDeposit = inputMonthlyDeposit 
+                #Input, Assignment, Validation for the _inputMonthlyWithdrawal 
+                while(type(inputMonthlyWithdrawal) != float): # While loop until the inputMonthlyWithdrawal is equal to a float
+                    inputMonthlyWithdrawal = input('Please enter the monthly withdrawal [< 1000]: ')
+                    if inputMonthlyWithdrawal.isalpha() == True:#Validate that inputMonthlyWithdrawal is not alphabetical
+                        print('Please enter a valid balance that is numeric.')  
+                    if float(inputMonthlyWithdrawal) < 1000:  #Validate that inputMonthlyWithdrawal less than or equal to 0
+                        print('Please enter a valid balance greater than 1000.')
+                    if float(inputMonthlyWithdrawal) >= 1000:
+                        inputMonthlyWithdrawal = float(inputMonthlyWithdrawal) 
                 self._monthlyWithdrawal = inputMonthlyWithdrawal  
                 bankInformationSubmitted = True
         except:
