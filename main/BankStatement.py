@@ -2,7 +2,7 @@ class BankStatement: #BankStatement class declaration
     def __init__(self): #BankStatement constructor
         _accountNumber = 0 #accountNumber for the BankStatement class (int)
         _initialBalance = 0.0 #intialBalance for the BankStatement class (float)
-        _interestRate = 0.0 #interestRate for the BankStatement class (float)
+        _annualInterestRate = 0.0 #interestRate for the BankStatement class (float)
         _accountHolderName = '' #accountHoldername for the BankStatement class (string)
         _monthlyDeposit = 0 #monthlyDeposit for the BankStatment class (int)
         _monthlyWithdrawal = 0 #monthlyWithdrawal for the BankStatement class (int)
@@ -58,7 +58,7 @@ class BankStatement: #BankStatement class declaration
                     if inputAnnualInterestRate.isdigit(): #If inputAnnualInterestRate is a digit then,
                         inputAnnualInterestRate = int(inputAnnualInterestRate) / 100 #Turn the whole number into a percentage by dividing the inputAnnualInterestRate by 100
                         float(inputAnnualInterestRate) #Convert inputAnnualInterestRate into a float
-                self._interestRate = inputAnnualInterestRate #Assignment of _interestRate to the inputAnnualInterestRate of the user 
+                self._annualInterestRate = inputAnnualInterestRate #Assignment of _interestRate to the inputAnnualInterestRate of the user 
                 #Input, Assignment, Validation for the _initialBalance
                 while(type(inputInitialBalance) != float): # While loop until the inputInitialBalance is equal to a float
                     inputInitialBalance = input('Please enter the initial balance [>= 0]: ')
@@ -77,21 +77,31 @@ class BankStatement: #BankStatement class declaration
                         print('Please enter a valid balance greater than 100.')
                     if float(inputMonthlyDeposit) >= 100:
                         inputMonthlyDeposit = float(inputMonthlyDeposit) 
-                self._MonthlyDeposit = inputMonthlyDeposit 
+                self._monthlyDeposit = inputMonthlyDeposit 
                 #Input, Assignment, Validation for the _inputMonthlyWithdrawal 
                 while(type(inputMonthlyWithdrawal) != float): # While loop until the inputMonthlyWithdrawal is equal to a float
                     inputMonthlyWithdrawal = input('Please enter the monthly withdrawal [< 1000]: ')
                     if inputMonthlyWithdrawal.isalpha() == True:#Validate that inputMonthlyWithdrawal is not alphabetical
                         print('Please enter a valid balance that is numeric.')  
-                    if float(inputMonthlyWithdrawal) < 1000:  #Validate that inputMonthlyWithdrawal less than or equal to 0
-                        print('Please enter a valid balance greater than 1000.')
-                    if float(inputMonthlyWithdrawal) >= 1000:
+                    if float(inputMonthlyWithdrawal) > 1000:  #Validate that inputMonthlyWithdrawal less than or equal to 0
+                        print('Please enter a valid balance less than 1000.')
+                    if float(inputMonthlyWithdrawal) <= 1000:
                         inputMonthlyWithdrawal = float(inputMonthlyWithdrawal) 
                 self._monthlyWithdrawal = inputMonthlyWithdrawal  
                 bankInformationSubmitted = True
         except:
             print('Something wrong has happened here...')
-    
-    #This method will be responsible for the print of the _bankAccountNumber, _accountHolderName,
-    #def displayBankStatement ():
+    #This method will be responsible for the print of the _bankAccountNumber, _accountHolderName, the Balance and Interest for each month with a result of the balance
+    def displayBankStatement(self):
+        accountNumberString = 'Account Number: ' + self._accountNumber + '\n' #Intializing accountNumberString to display the account number string alongside the field variable
+        accountHolderString = 'Name:           ' + self._accountHolderName #Initializing the accountHolderString to display the name string and _accountHolderName field variable
+        print(accountNumberString + accountHolderString) #Printing out the accountNumberString and the accountHolderString
+        monthlyInterestRate = self._annualInterestRate / 12 #Initializing the monthlyInterestRate by getting the _annualInterestRate and dividing it by 12
+        for month in range(1, 13):
+            newBalance = (self._initialBalance + self._monthlyDeposit) - self._monthlyWithdrawal
+            print("Month: " + str(month))
+            print("        Balance: " + str(newBalance))
+            interestAmount = newBalance * monthlyInterestRate
+            print("        Interest:" + str(interestAmount))
+
     
