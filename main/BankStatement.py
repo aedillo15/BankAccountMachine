@@ -93,15 +93,22 @@ class BankStatement: #BankStatement class declaration
             print('Something wrong has happened here...')
     #This method will be responsible for the print of the _bankAccountNumber, _accountHolderName, the Balance and Interest for each month with a result of the balance
     def displayBankStatement(self):
+        introductionString = '= = = = = = = = = = = = = = Programming Principles Bank Statement = = = = = = = = = = = = = = = = =' + '\n'
         accountNumberString = 'Account Number: ' + self._accountNumber + '\n' #Intializing accountNumberString to display the account number string alongside the field variable
         accountHolderString = 'Name:           ' + self._accountHolderName #Initializing the accountHolderString to display the name string and _accountHolderName field variable
-        print(accountNumberString + accountHolderString) #Printing out the accountNumberString and the accountHolderString
+        print(introductionString + accountNumberString + accountHolderString) #Printing out the accountNumberString and the accountHolderString
         monthlyInterestRate = self._annualInterestRate / 12 #Initializing the monthlyInterestRate by getting the _annualInterestRate and dividing it by 12
+        accountBalance = 0.0 #Initializing the accountBalance equal to the field attribute of _initialBalance
+        totalInterest = 0.0
+        accountBalance = self._initialBalance
+        endOfTheYearBalance = 0.0
         for month in range(1, 13):
-            newBalance = (self._initialBalance + self._monthlyDeposit) - self._monthlyWithdrawal
-            print("Month: " + str(month))
-            print("        Balance: " + str(newBalance))
-            interestAmount = newBalance * monthlyInterestRate
-            print("        Interest:" + str(interestAmount))
-
-    
+            accountBalance += self._monthlyDeposit #newBalance is equal to adding onto the intialBalance and with this value subtracting the _monthlyWithdrawal
+            accountBalance = accountBalance - self._monthlyWithdrawal 
+            print("Month " + str(month) + ":")
+            print("        Balance: " + str(accountBalance))
+            interestAmount = accountBalance * monthlyInterestRate
+            totalInterest += interestAmount
+            print("        Interest:" + str(totalInterest))
+        endOfTheYearBalance = accountBalance + totalInterest
+        print('\n' + '\n' + 'End of the Year Balance: ' + str(endOfTheYearBalance))
