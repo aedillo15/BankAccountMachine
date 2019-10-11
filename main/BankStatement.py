@@ -4,8 +4,8 @@ class BankStatement: #BankStatement class declaration
         _initialBalance = 0.0 #intialBalance for the BankStatement class (float)
         _annualInterestRate = 0.0 #interestRate for the BankStatement class (float)
         _accountHolderName = '' #accountHoldername for the BankStatement class (string)
-        _monthlyDeposit = 0 #monthlyDeposit for the BankStatment class (int)
-        _monthlyWithdrawal = 0 #monthlyWithdrawal for the BankStatement class (int)
+        _monthlyDeposit = 0.0 #monthlyDeposit for the BankStatment class (int)
+        _monthlyWithdrawal = 0.0 #monthlyWithdrawal for the BankStatement class (int)
     def bankProgram(self):  #bankProgram() is responsible for the input, assignment and validation of attributes the BankStatement 
         display = 'Welcome to Programming Principles Bank' #Start of bankProgram menu
         print(display) #Printing out bankProgram menu
